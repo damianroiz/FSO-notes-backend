@@ -7,11 +7,8 @@ require("dotenv").config();
 // }
 
 const password = process.argv[2];
-console.log(process.argv[2])
 
-// const url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@first-cluster.vi7l3sh.mongodb.net/noteApp?retryWrites=true&w=majority`;
-
-const url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.dyibbyi.mongodb.net/noteApp?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@first-cluster.vi7l3sh.mongodb.net/noteApp?retryWrites=true&w=majority`;
 
 mongoose.set("strictQuery", false);
 mongoose.connect(url).then(() => {
@@ -22,20 +19,20 @@ mongoose.connect(url).then(() => {
 
   const Note = mongoose.model("Note", noteSchema);
 
-  const notes = [
-    {
-      content: "HTML is Easy",
-      important: true,
-    },
-    {
-      content: "CSS is hard but fun",
-      important: true,
-    },
-    {
-      content: "Mongoose is complicated",
-      important: false,
-    },
-  ];
+  // const notes = [
+  //   {
+  //     content: "HTML is Easy",
+  //     important: true,
+  //   },
+  //   {
+  //     content: "CSS is hard but fun",
+  //     important: true,
+  //   },
+  //   {
+  //     content: "Mongoose is complicated",
+  //     important: false,
+  //   },
+  // ];
 
   ////////////// To insert more data
   // Note.insertMany(notes).then((result) => {
