@@ -8,8 +8,7 @@ const Note = require("./models/note");
 app.use(cors());
 app.use(express.static("dist"));
 app.use(express.json());
-app.use(requestLogger);
-app.use(express.static())
+// app.use(requestLogger);
 
 const password = process.argv[2];
 
