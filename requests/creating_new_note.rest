@@ -1,7 +1,15 @@
-POST http://localhost:3001/api/notes
+# POST http://localhost:3001/api/notes
+# Content-Type: application/json
+
+# {
+#   "content": "Ensures that everything still works",
+#   "important": true
+# }
+
+PUT http://localhost:3001/api/notes/6590752e17c1db0dbbcbb7c3
 Content-Type: application/json
 
 {
   "content": "Ensures that everything still works",
-  "important": true
+  "important": false
 }
