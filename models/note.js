@@ -1,25 +1,16 @@
 const mongoose = require("mongoose");
-require("dotenv").config();
-
-mongoose.set("strictQuery", false);
-
-const url = process.env.MONGODB_URI;
-
-console.log("connecting to", url);
-
-mongoose
-  .connect(url)
-  .then((result) => {
-    console.log("connected to MongoDB");
-  })
-  .catch((error) => {
-    console.log("error connecting to MongoDB:", error.message);
-  });
+const url = newFunction();
 
 const noteSchema = new mongoose.Schema({
   content: {
     type: String,
-    minLength: 5, 
+    _minLength: 5, 
+    get minLength() {
+      return this._minLength;
+    },
+    set minLength(value) {
+      this._minLength = value;
+    },
     required: true, 
   },
   important: Boolean,
@@ -34,3 +25,14 @@ noteSchema.set("toJSON", {
 });
 
 module.exports = mongoose.model("Note", noteSchema);
+function newFunction() {
+  require("dotenv").config();
+
+  mongoose.set("strictQuery", false);
+
+  const url = process.env.MONGODB_URI;
+
+  console.log("connecting to", url);
+  return url;
+}
+
