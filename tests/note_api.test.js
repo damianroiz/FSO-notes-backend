@@ -22,13 +22,14 @@ const Note = require("../models/note");
 
 beforeEach(async () => {
   await Note.deleteMany({});
-  let noteObject = new Note(helper.initialNotes[0]);
-  await noteObject.save();
-  noteObject = new Note(helper.initialNotes[1]);
-  await noteObject.save();
+
+  const noteObjects = helper.initialNotes.map((note) => new Note(note));
+  const promiseArray = noteObjects.map((note) => note.save());
+  await Promise.all(promiseArray);
 });
 
 test("notes are returned as json", async () => {
+  console.log("entered test");
   await api
     .get("/api/notes")
     .expect(200)
@@ -76,7 +77,7 @@ test("note without content is not added", async () => {
 
   const response = await api.get("/api/notes");
 
-  assert.strictEqual(response.body.length, helper.initialNotes.length); // Fix: Changed 'notesAtEnd' to 'response.body.length'
+  assert.strictEqual(response.body.length, helper.initialNotes.length);
 });
 
 test("a specific note can be viewed", async () => {
