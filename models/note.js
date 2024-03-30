@@ -10,20 +10,10 @@ const noteSchema = new mongoose.Schema({
     minlength: 5,
   },
   important: Boolean,
-
-  // replacing...
-  // content: {
-  //   type: String,
-  //   _minLength: 5,
-  //   get minLength() {
-  //     return this._minLength;
-  //   },
-  //   set minLength(value) {
-  //     this._minLength = value;
-  //   },
-  //   required: true,
-  // },
-  // important: Boolean,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 noteSchema.set("toJSON", {
@@ -35,13 +25,3 @@ noteSchema.set("toJSON", {
 });
 
 module.exports = mongoose.model("Note", noteSchema);
-// function newFunction() {
-//   require("dotenv").config();
-
-//   mongoose.set("strictQuery", false);
-
-//   const url = process.env.MONGODB_URI;
-
-//   console.log("connecting to", url);
-//   return url;
-// }

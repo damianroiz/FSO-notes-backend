@@ -16,7 +16,7 @@ notesRouter.put("/:id", async (request, response) => {
   const updateNote = await Note.findByIdAndUpdate(request.params.id, note, {
     new: true,
   });
-  response.json(updatedNote);
+  response.json(updateNote);
 });
 
 notesRouter.post("/", async (request, response) => {
