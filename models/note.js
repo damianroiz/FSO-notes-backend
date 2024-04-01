@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-// const url = newFunction();
 
 const noteSchema = new mongoose.Schema({
   // copied from https://github.com/fullstack-hy2020/part3-notes-backend/blob/part4-5/models/note.js
