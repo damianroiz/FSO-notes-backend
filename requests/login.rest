@@ -2,8 +2,16 @@ post http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-    "username": "mluukkai",
-    "password": "salainen"
+    "username": "damian",
+    "password": "cosenza"
 }
 
 ###
+
+post http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "mluukkai",
+    "password": "salainen"
+}

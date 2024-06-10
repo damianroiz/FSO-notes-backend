@@ -3,6 +3,7 @@ const notesRouter = require("express").Router();
 const Note = require("../models/note");
 const User = require("../models/user");
 
+
 const getTokenFrom = (request) => {
   const authorization = request.get("authorization");
   if (authorization && authorization.startsWith("Bearer ")) {
@@ -11,7 +12,6 @@ const getTokenFrom = (request) => {
     return null;
   }
 };
-
 notesRouter.get("/", async (request, response) => {
   const notes = await Note.find({}).populate("user", { username: 1, name: 1 });
   response.json(notes);
